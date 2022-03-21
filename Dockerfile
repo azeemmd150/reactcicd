@@ -6,4 +6,4 @@ RUN npm install --save --legacy-peer-deps
 RUN npm install react-scripts@4.0.3 -g
 COPY . ./
 EXPOSE 3000
-CMD ["node ","index.js"];
+CMD ["node ","App.js"];
