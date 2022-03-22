@@ -1,9 +1,11 @@
-FROM node:16
+FROM node:16 as builder
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package*.json /usr/src/app
-RUN npm install --save --legacy-peer-deps
-RUN npm install react-scripts@4.0.3 -g
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@4.0.3 -g --silent
+COPY . /usr/src/app
 COPY . ./
 EXPOSE 3000
 CMD ["npm ","start"];
